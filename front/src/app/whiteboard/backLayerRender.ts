@@ -5,27 +5,12 @@ declare const Konva: any;
 * BackLayer render of infinitely whiteboard
 */
 export class BackLayerRender {
-  /*
-  * Start X
-  */
   currentX = -120;
-  /*
-  * Start Y
-  */
   currentY = -120;
   width = 0;
   height = 0;
-  /*
-  * Step size
-  */
   step = 60;
-  /*
-  * Reference to back layer
-  */
   layer: any;
-  /*
-  * Cache of rendered points
-  */
   points = new Map<string, string>();
 
   constructor(layer: any) {
@@ -35,12 +20,7 @@ export class BackLayerRender {
   /*
   * Draw new points
   */
-  updateGrid(width: number, height: number, x: number, y: number, scaleOffset: number) {
-    width = width / scaleOffset;
-    height = height / scaleOffset;
-    x = x / scaleOffset;
-    y = y / scaleOffset;
-
+  updateGrid(width: number, height: number, x: number, y: number) {
     const position  = this.getLayerPoint(x, y);
 
     if (position.x < 0) {
@@ -96,17 +76,6 @@ export class BackLayerRender {
       y: y,
       width: this.step,
       height: this.step,
-      stroke: '#e2e2ea',
-      strokeWidth: 1,
-      lineCap: 'round',
-      lineJoin: 'round',
-    });
-    return rect;
-  }
-
-  createLine(x: number, y: number, x1: number, y1: number) {
-    var rect = new Konva.Line({
-      points: [x, y, x1, y1],
       stroke: '#e2e2ea',
       strokeWidth: 1,
       lineCap: 'round',

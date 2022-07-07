@@ -27,7 +27,7 @@ export class WhiteBoard {
             console.log('dragend');
             const position = e.currentTarget.position();
             
-            this.backLayerRender.updateGrid(this.width, this.height, position.x, position.y, 1);
+            this.backLayerRender.updateGrid(this.width, this.height, position.x, position.y);
         });
     }
 
@@ -48,7 +48,7 @@ export class WhiteBoard {
 
     drawSimpleShapes() {
 
-        var circle = new Konva.Circle({
+        const circle = new Konva.Circle({
           x: this.stage.width() / 2,
           y: this.stage.height() / 2,
           radius: 70,
@@ -57,17 +57,26 @@ export class WhiteBoard {
           strokeWidth: 4,
         });
 
-        var rect3 = new Konva.Rect({
-            x: 50,
-            y: 120,
+        const rect3 = new Konva.Rect({
+            x: 550,
+            y: 320,
             width: 100,
             height: 100,
             fill: '#1486F5',
             cornerRadius: [0, 10, 20, 30],
           });
+
+        const rect4 = new Konva.Rect({
+            x: 850,
+            y: 120,
+            width: 100,
+            height: 100,
+            fill: '#FF00B8'
+          });
         
   
         this.mainLayer.add(rect3);
+        this.mainLayer.add(rect4);
         this.mainLayer.add(circle);
         this.mainLayer.draw();
     }
