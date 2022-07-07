@@ -1,4 +1,3 @@
-import Konva from "konva";
 
 declare const Konva: any;
 
@@ -23,7 +22,7 @@ export class BackLayerRender {
   /*
   * Reference to back layer
   */
-  layer: Konva.Layer;
+  layer: any;
   /*
   * Cache of rendered points
   */
@@ -50,7 +49,7 @@ export class BackLayerRender {
     if (position.y < 0) {
       height = height + (-position.y);
     }
-    
+
     const newx = -position.x;
     const newy = - position.y;
     const newShapes = [];
